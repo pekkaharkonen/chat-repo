@@ -1,7 +1,8 @@
-
+const User = require("../db/schemat/userSchema")
 
 const getUsers = () => {
     //return all registered users
+    return User.find()
 }
 
 const getActiveUsers = () => {
@@ -16,6 +17,7 @@ const disconnectUser = (user) => {
     //set user active status to false, return disconnect msg
 }
 
+getUsers();
 // const deleteUser = (user) => {
 //     //logic
 // }
