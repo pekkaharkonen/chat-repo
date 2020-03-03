@@ -3,6 +3,11 @@ const router = Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../db/schemat/userSchema');
+const userService = require("../services/userService")
+
+router.get("/", async (req, res) => {
+    res.json(await userService.getUsers())
+})
 
 router.route('/').post(async (req, res) => {
   // destructuring data from req.body:
