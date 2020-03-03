@@ -2,7 +2,7 @@ const { Router } = require('express');
 const router = Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { User } = require('../db/schemat/userSchema');
+const User = require('../db/schemat/userSchema');
 
 router.route('/').post(async (req, res) => {
   // destructuring data from req.body:
@@ -10,7 +10,7 @@ router.route('/').post(async (req, res) => {
 
   try {
     //Check if user exists
-    let user = User.findOne({ email });
+    let user = await User.findOne({ email });
 
     if (user) {
       return res.status(400).json({ msg: 'User already exists!' });
@@ -29,7 +29,7 @@ router.route('/').post(async (req, res) => {
 
     //Hash password - generate hash and replace the password with the hashed password in user object
 
-    user.password = await bcrypt(password, salt);
+    user.password = await bcrypt.hash(password, salt);
 
     //Save the user to DB:
     await user.save();
