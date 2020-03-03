@@ -2,13 +2,16 @@ const express = require("express")
 const app = express()
 const morgan = require("morgan")
 const mongoose = require("mongoose")
+require('dotenv').config();
 
 app.use(express.json())
 app.use(morgan("tiny"))
 
-mongoose.connect('mongodb+srv://HessuHopo:Hessu_hopnolla@hopo-fxexq.mongodb.net/Hopo?retryWrites=true&w=majority')
-.then(() => console.log('MongoDB connected'))
-.catch(err => console.log(err));
+mongoose.connect(process.env.DATABASE_URL,{ useNewUrlParser: true
+});
+const db = mongoose.connection;
+db.on("error", error => console.log(error));
+db.once("open", () => console.log("connection to database established"));
 
 
 const usersRoute = require("./routes/usersRoute")
