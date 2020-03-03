@@ -17,9 +17,9 @@ router.get("/", async (req, res) => {
 }); 
 
 // Create One Rooms
-router.post("/", async (req, res) => {
+router.post("/:room", async (req, res) => {
     try {
-        const newRoom = await createRoom(req.body); // Tarkasta roomServicestä
+        const newRoom = await createRoom(req.params.room); // Tarkasta roomServicestä
         if (!newRoom) {
             res.status(404);
         }
