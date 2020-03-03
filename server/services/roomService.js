@@ -3,15 +3,12 @@ const mongoose = require("mongoose");
 const Room = require('../db/schemat/roomSchema');
 
 
-// const USER = process.env.PGUSER;
-// const PASSWORD = process.env.PGPASSWORD;
-const getAllRooms=()=> {
-    // const rooms = await Room.find()  
+const getAllRooms=()=> { 
     return Room.find();
 }
-async function addRoom() {
-
+const createRoom=(r)=> {
+    return Room.create(r);
 }
 
 
-module.exports = {getAllRooms} 
+module.exports = {getAllRooms, createRoom} 

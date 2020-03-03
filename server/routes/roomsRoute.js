@@ -1,7 +1,7 @@
 const { Router } = require("express")
 const router = Router()
 const getAllRooms = require('../services/roomService').getAllRooms;
-
+const createRoom = require('../services/roomService').createRoom;
 // Get All Rooms
 router.get("/", async (req, res) => {
     try {
@@ -16,9 +16,9 @@ router.get("/", async (req, res) => {
     }
 }); 
 // Create One Rooms
-router.post("/:room", async (req, res) => {
+router.post("/", async (req, res) => {
     try {
-        const newRoom = await createRoom(req.params.room);
+        const newRoom = await createRoom(req.body);
         if (!newRoom) {
             res.status(404);
         }
