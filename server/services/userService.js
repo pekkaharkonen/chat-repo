@@ -17,7 +17,6 @@ const disconnectUser = (user) => {
     //set user active status to false, return disconnect msg
 }
 
-getUsers();
 // const deleteUser = (user) => {
 //     //logic
 // }
