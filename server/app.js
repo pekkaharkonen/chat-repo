@@ -3,10 +3,11 @@ const app = express()
 const morgan = require("morgan")
 const mongoose = require("mongoose")
 
+// middleware
 app.use(express.json())
 app.use(morgan("tiny"))
 
-
+//routes
 const usersRoute = require("./routes/usersRoute")
 const authRoute = require("./routes/authRoute")
 const roomsRoute = require("./routes/roomsRoute")
