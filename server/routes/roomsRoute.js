@@ -1,11 +1,11 @@
 const { Router } = require("express")
 const router = Router()
-const { getAllRooms, createRoom} = require('../services/roomService'); // Tarkista oikeat nimet roomServicestä
+const getAllRooms = require('../services/roomService').getAllRooms;
 
 // Get All Rooms
 router.get("/", async (req, res) => {
     try {
-        const roomData = await getAllRooms(); // Tarkasta roomServicestä
+        const roomData = await getAllRooms();
         if (!roomData) {
             res.status(404);
         }
@@ -15,11 +15,10 @@ router.get("/", async (req, res) => {
         res.status(400);
     }
 }); 
-
 // Create One Rooms
 router.post("/:room", async (req, res) => {
     try {
-        const newRoom = await createRoom(req.params.room); // Tarkasta roomServicestä
+        const newRoom = await createRoom(req.params.room);
         if (!newRoom) {
             res.status(404);
         }
