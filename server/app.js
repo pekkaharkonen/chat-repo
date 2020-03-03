@@ -6,6 +6,10 @@ const mongoose = require("mongoose")
 app.use(express.json())
 app.use(morgan("tiny"))
 
+mongoose.connect('mongodb+srv://HessuHopo:Hessu_hopnolla@hopo-fxexq.mongodb.net/Hopo?retryWrites=true&w=majority')
+.then(() => console.log('MongoDB connected'))
+.catch(err => console.log(err));
+
 
 const usersRoute = require("./routes/usersRoute")
 const authRoute = require("./routes/authRoute")
