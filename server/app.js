@@ -2,12 +2,20 @@ const express = require("express")
 const app = express()
 const morgan = require("morgan")
 const mongoose = require("mongoose")
+require('dotenv').config();
 
 // middleware
 app.use(express.json())
 app.use(morgan("tiny"))
 
+
 //routes
+mongoose.connect(process.env.DATABASE_URL,{ useNewUrlParser: true
+});
+const db = mongoose.connection;
+db.on("error", error => console.log(error));
+db.once("open", () => console.log("connection to database established"));
+
 const usersRoute = require("./routes/usersRoute")
 const authRoute = require("./routes/authRoute")
 const roomsRoute = require("./routes/roomsRoute")
