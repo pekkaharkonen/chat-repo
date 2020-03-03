@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const passport = require('passport');
 require('dotenv').config();
 
 // middleware
@@ -18,6 +19,9 @@ mongoose.connect(process.env.DATABASE_URL, {
 const db = mongoose.connection;
 db.on('error', error => console.log(error));
 db.once('open', () => console.log('connection to database established'));
+
+app.use(passport.initialize());
+require('./passport')(passport);
 
 const usersRoute = require('./routes/usersRoute');
 const authRoute = require('./routes/authRoute');
