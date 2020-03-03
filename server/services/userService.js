@@ -2,7 +2,7 @@ const User = require("../db/schemat/userSchema")
 
 const getUsers = () => {
     //return all registered users
-    console.log(User.find())
+    return User.find()
 }
 
 const getActiveUsers = () => {

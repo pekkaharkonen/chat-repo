@@ -2,8 +2,8 @@ const { Router } = require('express');
 const router = Router();
 const userService = require("../services/userService")
 
-router.get("/", (req, res) => {
-    userService.getUsers()
+router.get("/", async (req, res) => {
+    res.json(await userService.getUsers())
 })
 
 router.route('/').post(async (req, res) => {
