@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Room = ({ match }) => {
-  return (
-    <div>
-      <h1>{`Welcome to ${match.params.name} room!`}</h1>
-    </div>
-  );
-};
+class Room extends Component {
+    render() {
+        return (
+            <div>
+
+            </div>
+        );
+    }
+}
 
 export default Room;

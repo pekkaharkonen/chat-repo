@@ -4,12 +4,14 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const cors = require('cors');
+
 require('dotenv').config();
 
 // middleware
 app.use(cors());
 app.use(express.json());
 app.use(morgan('tiny'));
+app.use(cors());
 
 //routes
 mongoose.connect(process.env.DATABASE_URL, {
@@ -23,6 +25,7 @@ db.once('open', () => console.log('connection to database established'));
 
 app.use(passport.initialize());
 require('./passport')(passport);
+app.use(cors())
 
 const usersRoute = require('./routes/usersRoute');
 const authRoute = require('./routes/authRoute');
