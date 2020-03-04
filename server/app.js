@@ -3,6 +3,7 @@ const app = express();
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const passport = require('passport');
+const cors = require("cors")
 require('dotenv').config();
 const cors = require('cors');
 // middleware
@@ -23,6 +24,7 @@ db.once('open', () => console.log('connection to database established'));
 
 app.use(passport.initialize());
 require('./passport')(passport);
+app.use(cors())
 
 const usersRoute = require('./routes/usersRoute');
 const authRoute = require('./routes/authRoute');
