@@ -8,3 +8,6 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.MuiCard-root {
+  width: 300px;
+}
