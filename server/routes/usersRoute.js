@@ -8,6 +8,10 @@ const User = require('../db/schemat/userSchema');
 router.route('/').post(async (req, res) => {
   const { username, password, email } = req.body;
 
+  if (!username || !password || !email) {
+    return res.status(400).json({ msg: 'Required field is missing!' });
+  }
+
   try {
     //Check if user exists - Siirretään serviceen kun tehty siellä!
     let user = await User.findOne({ email });
