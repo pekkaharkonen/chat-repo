@@ -6,6 +6,10 @@ const getUsers = () => {
   return User.find();
 };
 
+const getUserByUsername = username => {
+  return User.find({ username });
+};
+
 const getActiveUsers = () => {
   //return all users from db where active status = true
 };
@@ -18,18 +22,19 @@ const addUser = async user => {
     password,
     email
   });
+  try {
+    //Generating salt with recommended strength
+    const salt = await bcrypt.genSalt(10);
 
-  //Generating salt with recommended strength
-  const salt = await bcrypt.genSalt(10);
+    //Hash password - generate hash and replace the password with the hashed password in user object
 
-  //Hash password - generate hash and replace the password with the hashed password in user object
-
-  user.password = await bcrypt.hash(password, salt);
-
-  //Save the user to DB:
-  await user.save();
-
-  return;
+    user.password = await bcrypt.hash(password, salt);
+    //Save the user to DB:
+    await user.save();
+    console.log(user.getJwtToken());
+  } catch (err) {
+    console.error(err.message);
+  }
 };
 
 const disconnectUser = user => {
@@ -40,4 +45,4 @@ const disconnectUser = user => {
 //     //logic
 // }
 
-module.exports = { getUsers, addUser };
+module.exports = { getUsers, addUser, getUserByUsername };
