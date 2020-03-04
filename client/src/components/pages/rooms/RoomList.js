@@ -3,7 +3,7 @@ import Room from './room/Room';
 
 class RoomList extends Component {
     render() {
-        const allRooms = this.props.Rooms
+        const allRooms = this.props.rooms
         .map(function (room) {
             return(<Room room={room} />);
         });
