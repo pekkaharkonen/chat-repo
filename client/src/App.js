@@ -15,6 +15,7 @@ function App() {
               <Komponentti {...routerProps} yksipropsi={yksipropsi} />;
             }}
           /> */}
+          {/* <Route path="/rooms" exact component={Rooms}/> */}
           <Rooms />
         </Switch>
       </Router>

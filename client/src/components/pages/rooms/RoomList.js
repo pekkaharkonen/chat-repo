@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Room from './room/Room';
+import RoomItem from './RoomItem';
 
 class RoomList extends Component {
     render() {
         const allRooms = this.props.rooms
         .map(function (room) {
-            return(<Room room={room} />);
+            return(<RoomItem room={room} />);
         });
         return (
             <ul>

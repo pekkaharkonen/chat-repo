@@ -4,10 +4,11 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const passport = require('passport');
 require('dotenv').config();
-
+const cors = require('cors');
 // middleware
 app.use(express.json());
 app.use(morgan('tiny'));
+app.use(cors());
 
 //routes
 mongoose.connect(process.env.DATABASE_URL, {
