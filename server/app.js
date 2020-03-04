@@ -3,9 +3,11 @@ const app = express();
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const passport = require('passport');
+const cors = require('cors');
 require('dotenv').config();
 
 // middleware
+app.use(cors());
 app.use(express.json());
 app.use(morgan('tiny'));
 
@@ -14,7 +16,6 @@ mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true
-
 });
 const db = mongoose.connection;
 db.on('error', error => console.log(error));
