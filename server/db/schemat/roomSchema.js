@@ -8,6 +8,9 @@ const roomSchema = new Schema( {
     },
     NumOfMessages: {
         type: Number
+    },
+    description: {
+        type: String
     }
 });
 

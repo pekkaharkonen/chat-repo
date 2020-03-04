@@ -1,5 +1,4 @@
 .App {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -7,4 +6,19 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+.MuiCard-root {
+  display: block;
+  width: 300px;
+  float: left;
+  margin: 30px;;
+}
+.roomListClass  {
+  list-style: none;
+  margin: 20px;
+  min-width: 696px;
+  float: left;
+}
+.roomListClass {
+  display: grid;
 }
