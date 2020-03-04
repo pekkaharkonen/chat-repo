@@ -4,7 +4,7 @@ import {getAllRooms} from '../../../services/roomService';
 
 class Rooms extends Component {
     state = {rooms:[]}
-    componentDidMount=()=>{
+    componentDidMount=async()=>{
         let rooms = await getAllRooms(); // Kesken, vaatii toteutusta
         this.setState({rooms});
     }
