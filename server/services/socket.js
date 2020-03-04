@@ -15,13 +15,6 @@ const handleGetAvailableUsers = () => {
     // -> client side socket rerenders users list (socket.on("get users", (data) => ...)
 }
 
-io.sockets.on("connection", (client) => {
-    async const user = await getUserByUsername(client.username)
-    availableUsers.push(user)
-    handleGetAvailableUsers()
-    console.log("Connected: %s sockets connected", availableUsers.length)
-})
-
 const handleRegister = (userName, callback) => {
     const user = getUserByUsername(userName)
      users.push(user)
@@ -52,7 +45,9 @@ const handleGetAvailableUsers = () => {
 }
 
 io.on("connection", (socket => {
-    availableUsers.push(socket)
+    async const user = await getUserByUsername(socket.username)
+    availableUsers.push(user)
+    handleGetAvailableUsers()
     console.log(`${availableUsers.length} active users connected`)
 
     socket.on("register", handleRegister)
