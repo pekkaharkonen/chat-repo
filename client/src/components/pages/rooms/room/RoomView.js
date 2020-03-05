@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import io from "socket.io-client";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import RoomHeader from './RoomHeader';
+import {socketConnection, getAvailableUsers, disconnect, sendMessage} from "../../../../services/clientSocketService"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -27,7 +27,11 @@ const RoomView = (props) => {
 
   const classes = useStyles();
   const [value, setValue] = React.useState('Controlled');
+  const [textField, setTextField] = useState("")
 
+  const send = () => {
+    sendMessage(textField)
+}
 
   return (
     <div>
@@ -42,8 +46,10 @@ const RoomView = (props) => {
           multiline
           rows="5"
           variant="outlined"
+          value={textField}
+          onChange={e => setTextField(e.target.value)}
         />            
-        <Button className='SendMessageButton' variant="contained" type="submit" color="primary">Send</Button>
+        <Button className='SendMessageButton' variant="contained" type="submit" color="primary" onClick={send}>Send</Button>
       </footer>
     </div>
   );

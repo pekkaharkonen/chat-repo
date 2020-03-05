@@ -13,7 +13,6 @@ export const socketConnection = () => {
         })
         .on("new message", (msg) => {
             console.log(msg)
-            document.getElementById("output").innerHTML = msg
         })
 }
 
@@ -28,7 +27,9 @@ export const disconnect = () => {
     socket.off("disconnect")
 }
 export const sendMessage = (msg) => {
-    socket.emit("message", msg)
+    console.log(msg + " from client")
+    console.log(socket)
+    socket.emit("message", "msg")
 }
 
 
