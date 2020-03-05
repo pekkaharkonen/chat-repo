@@ -8,9 +8,9 @@ class RoomList extends Component {
             return(<RoomItem room={room} />);
         });
         return (
-            <div className="roomListClass">
-                <div>{allRooms}</div>
-            </div>
+            <ul>
+                <li>{allRooms}</li>
+            </ul>
         );
     }
 }
