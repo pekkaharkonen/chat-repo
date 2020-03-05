@@ -33,7 +33,7 @@ module.exports = function(passport) {
         } else {
           return done(null, false, { message: 'Invalid credentials' });
         }
-      } catch (error) {
+      } catch (err) {
         console.error(err.message);
       }
     })
