@@ -7,13 +7,11 @@ import Login from './components/pages/landing/Login';
 import Register from './components/pages/landing/Register';
 import Rooms from './components/pages/rooms/Rooms';
 import ProtectedRoute from './components/ProtectedRoute';
-import SocketTest from './components/socketTest';
 
 
 function App() {
   return (
     <div className='App'>
-      <SocketTest />
       <Router>
         <Switch>
           <Route exact path='/' component={Landing} />
