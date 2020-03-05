@@ -52,6 +52,12 @@ footer {
 }
 .SendMessageButton {
   height: 50px;
-   padding:20px; 
-   margin:20px
+  padding: 20px;
+  margin: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .create-form {
+    flex-direction: column;
+  }
 }
