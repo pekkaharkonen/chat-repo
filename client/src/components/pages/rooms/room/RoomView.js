@@ -1,19 +1,32 @@
-import React from 'react'
-import * as scs from "../../../../services/socketClientService"
-import RoomHeader from './RoomHeader'
-import RoomMessageArea from './RoomMessageArea'
-import RoomWriteMessage from './RoomWriteMessage'
-
-
+import React, { useState, useEffect } from 'react';
+import RoomHeader from './RoomHeader';
+import RoomMessageArea from './RoomMessageArea';
+import RoomWriteMessage from './RoomWriteMessage';
 
 const RoomView = () => {
-    return (
-        <div>
-            <RoomHeader />
-            <RoomMessageArea />
-            <RoomWriteMessage />
-        </div>
-    )
-}
+  const [message, setMessage] = useState('');
+  const handleKeyPress = e => {
+    if (e.key === 'Enter') {
+      console.log('Enter painettu');
+    }
+  };
 
-export default RoomView
+  useEffect(() => {}, []);
+
+  return (
+    <div>
+      <input
+        type='text'
+        placeholder='Enter your message here...'
+        value={message}
+        onChange={e => setMessage(e.target.value)}
+        onKeyPress={e => handleKeyPress(e)}
+      />
+      {/* <RoomHeader />
+            <RoomMessageArea />
+            <RoomWriteMessage /> */}
+    </div>
+  );
+};
+
+export default RoomView;

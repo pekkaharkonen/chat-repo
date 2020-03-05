@@ -2,9 +2,19 @@ const LocalStrategy = require('passport-local').Strategy;
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
+const JWTstrategy = require('passport-jwt').Strategy;
+const ExtractJwt = require('passport-jwt').ExtractJwt;
+
+// Opts for JWT Strategy. secret from .env and JWT from header
+const opts = {
+  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+  secretOrKey: process.env.JWT_SECRET
+};
+
 // Load User Model
 const User = require('./db/schemat/userSchema');
 
+// LOCAL STRATEGY - Used with login
 module.exports = function(passport) {
   passport.use(
     new LocalStrategy(async (username, password, done) => {
@@ -29,8 +39,6 @@ module.exports = function(passport) {
     })
   );
 
-  // En tiedä miksi tarvitaan? MUTTA VAADITAAN  https://stackoverflow.com/questions/19948816/passport-js-error-failed-to-serialize-user-into-session
-
   passport.serializeUser(function(user, done) {
     done(null, user);
   });
@@ -38,4 +46,23 @@ module.exports = function(passport) {
   passport.deserializeUser(function(user, done) {
     done(null, user);
   });
+
+  // JWT STRATEGY (used with routes where login is required):
+  passport.use(
+    new JWTstrategy(opts, async (jwt_payload, done) => {
+      try {
+        console.log(jwt_payload.id);
+        let user = await User.findOne({ _id: jwt_payload.id });
+        console.log(user);
+        if (!user) {
+          return done(null, false);
+        } else {
+          // null for errors, user for user
+          return done(null, user);
+        }
+      } catch (err) {
+        console.error(err.message);
+      }
+    })
+  );
 };

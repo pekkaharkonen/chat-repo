@@ -13,4 +13,12 @@ router
     res.status(200).json({ success: true, token });
   });
 
+router.get(
+  '/authenticate',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    res.json({ user: req.user });
+  }
+);
+
 module.exports = router;
