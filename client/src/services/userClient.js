@@ -5,6 +5,7 @@ const userApiURL = '/api/users';
 export const registerUser = async user => {
   try {
     let response = await Axios.post(userApiURL, user);
+    console.log(response);
     if (response.status === 200 || response.status === 201) {
       return response.data;
     } else {

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { registerUser } from '../../../services/userClient';
 import { TextField, Paper, Button } from '@material-ui/core';
+import Swal from 'sweetalert2';
 
 const Register = ({ history }) => {
   const [username, setUsername] = useState('');
@@ -12,21 +13,21 @@ const Register = ({ history }) => {
     e.preventDefault();
 
     if (password !== password2) {
-      alert('Password inputs do not match!');
+      Swal.fire('Password inputs do not match!', '', 'error');
       return;
     } else {
       //Do something here
       let response = await registerUser({ username, password, email });
       console.log(response);
       if (response) {
-        alert('User created, you can log in now!');
+        Swal.fire('Register successful, you can log in now!');
         setUsername('');
         setPassword('');
         setPassword2('');
         setEmail('');
         history.push('/login');
       } else {
-        alert('Please try to register with different email and/or username');
+        Swal.fire('Username already taken!', '', 'error');
       }
     }
   };
@@ -34,12 +35,11 @@ const Register = ({ history }) => {
   return (
     <div className='landing'>
       <Paper elevation={4} style={{ padding: '2rem', background: '#f4f4f4' }}>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} autoComplete='off'>
           <div className='input-group'>
             <TextField
               type='text'
               name='username'
-              id='username'
               label='Username'
               value={username}
               onChange={e => setUsername(e.target.value)}
@@ -49,7 +49,6 @@ const Register = ({ history }) => {
             <TextField
               type='email'
               name='email'
-              id='email'
               label='Email'
               value={email}
               onChange={e => setEmail(e.target.value)}
@@ -59,7 +58,6 @@ const Register = ({ history }) => {
             <TextField
               type='password'
               name='password'
-              id='password'
               label='Password'
               value={password}
               onChange={e => setPassword(e.target.value)}
@@ -69,7 +67,6 @@ const Register = ({ history }) => {
             <TextField
               type='password'
               name='password2'
-              id='password2'
               label='Confirm password'
               value={password2}
               onChange={e => setPassword2(e.target.value)}

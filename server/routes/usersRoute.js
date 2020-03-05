@@ -20,6 +20,12 @@ router.route('/').post(async (req, res) => {
       return res.status(400).json({ msg: 'User already exists!' });
     }
 
+    user = await User.findOne({ username });
+
+    if (user) {
+      return res.status(400).json({ msg: 'User already exists!' });
+    }
+
     let token = await addUser({ username, password, email });
 
     res.status(201).json({ success: true, token });

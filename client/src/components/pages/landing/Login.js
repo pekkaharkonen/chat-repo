@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { loginUser } from '../../../services/authClient';
 import { TextField, Paper, Button } from '@material-ui/core';
+import Swal from 'sweetalert2';
 
 const Login = ({ history }) => {
   const [username, setUsername] = useState('');
@@ -18,7 +19,8 @@ const Login = ({ history }) => {
       console.log('Set to local storage successful');
       history.push('/rooms');
     } else {
-      alert('Invalid credentials!');
+      Swal.fire('Invalid credentials!', '', 'error');
+      // alert('Invalid credentials!');
       setUsername('');
       setPassword('');
     }
@@ -29,7 +31,6 @@ const Login = ({ history }) => {
         <form onSubmit={handleSubmit}>
           <div className='input-group'>
             <TextField
-              id='username'
               label='Username'
               autoComplete='off'
               value={username}
@@ -38,7 +39,6 @@ const Login = ({ history }) => {
           </div>
           <div className='input-group'>
             <TextField
-              id='username'
               label='Password'
               type='password'
               autoComplete='off'
