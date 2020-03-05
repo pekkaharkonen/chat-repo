@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { loginUser } from '../../../services/authClient';
+import { TextField, Paper, Button } from '@material-ui/core';
+import Swal from 'sweetalert2';
 
 const Login = ({ history }) => {
   const [username, setUsername] = useState('');
@@ -17,39 +19,50 @@ const Login = ({ history }) => {
       console.log('Set to local storage successful');
       history.push('/rooms');
     } else {
-      alert('Invalid credentials!');
+      Swal.fire('Invalid credentials!', '', 'error');
+      // alert('Invalid credentials!');
       setUsername('');
       setPassword('');
     }
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <div className='input-group'>
-          <label htmlFor='username'>Username</label>
-          <input
-            type='text'
-            name='username'
-            id='username'
-            value={username}
-            onChange={e => setUsername(e.target.value)}
-          />
-        </div>
-        <div className='input-group'>
-          <label htmlFor='password'>Password</label>
-          <input
-            type='password'
-            name='password'
-            id='password'
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-          />
-        </div>
-        <button type='submit'>Login</button>
-        <button type='button' onClick={() => history.push('/')}>
-          Cancel
-        </button>
-      </form>
+    <div className='landing'>
+      <Paper elevation={4} style={{ padding: '2rem', background: '#f4f4f4' }}>
+        <form onSubmit={handleSubmit}>
+          <div className='input-group'>
+            <TextField
+              label='Username'
+              autoComplete='off'
+              value={username}
+              onChange={e => setUsername(e.target.value)}
+            />
+          </div>
+          <div className='input-group'>
+            <TextField
+              label='Password'
+              type='password'
+              autoComplete='off'
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+            />
+          </div>
+          <div
+            className='input-group'
+            style={{ display: 'flex', justifyContent: 'center' }}
+          >
+            <Button type='submit' style={{ marginTop: '1.5rem' }}>
+              Login
+            </Button>
+            <Button
+              type='button'
+              style={{ marginTop: '1.5rem' }}
+              onClick={() => history.push('/')}
+            >
+              Cancel
+            </Button>
+          </div>
+        </form>
+      </Paper>
     </div>
   );
 };
