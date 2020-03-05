@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import socket from "../../../../services/clientSockets"
 import io from "socket.io-client";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -19,14 +18,12 @@ const useStyles = makeStyles(theme => ({
 },
 }));
 
+
 const RoomView = () => {
 
   const classes = useStyles();
   const [value, setValue] = React.useState('Controlled');
 
-  const handleChange = event => {
-    setValue(event.target.value);
-  };
 
   return (
     <div>
