@@ -31,35 +31,45 @@ class CreateRoom extends Component {
 
   render() {
     return (
-      <div style={{ margin: 'auto', minHeight: '200px' }}>
-        <Typography
-          component='div'
-          style={{ height: '20vh', padding: ' 50px' }}
+      <div
+        style={{
+          margin: 'auto',
+          minHeight: '200px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
+      >
+        <Typography variant='h5'>Create Chat room</Typography>
+        <form
+          noValidate
+          className='create-form'
+          autoComplete='off'
+          onSubmit={this.ready}
+          style={{
+            display: 'flex',
+            alignItems: 'center'
+          }}
         >
-          <Typography variant='h5'>Create Chat room</Typography>
-          <form noValidate autoComplete='off' onSubmit={this.ready}>
-            <TextField
-              id='standard-basic'
-              label='Room name'
-              value={this.state.name}
-              onChange={this.nameAdded}
-            />
-            <TextField
-              id='standard-basic'
-              label='Room description'
-              value={this.state.description}
-              onChange={this.descriptionAdded}
-            />
-            <Button
-              variant='contained'
-              type='submit'
-              color='primary'
-              style={{ margin: 'px' }}
-            >
-              Create
-            </Button>
-          </form>
-        </Typography>
+          <TextField
+            id='standard-basic'
+            label='Room name'
+            value={this.state.name}
+            onChange={this.nameAdded}
+            style={{ margin: '0.5rem' }}
+          />
+          <TextField
+            id='standard-basic'
+            label='Room description'
+            value={this.state.description}
+            onChange={this.descriptionAdded}
+            style={{ margin: '0.5rem', marginRight: '1rem' }}
+          />
+          <Button variant='contained' type='submit' color='primary'>
+            Create
+          </Button>
+        </form>
       </div>
     );
   }

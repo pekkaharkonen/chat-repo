@@ -11,10 +11,11 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
+    height: 280
   },
   media: {
-    height: 140,
-  },
+    height: 140
+  }
 });
 
 export default function RoomItem(props) {
@@ -26,19 +27,19 @@ export default function RoomItem(props) {
         <CardMedia
           className={classes.media}
           image={`https://source.unsplash.com/featured/?${props.room.name}`}
-          title="Contemplative Reptile"
+          title='Contemplative Reptile'
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-          {props.room.name}
+          <Typography gutterBottom variant='h5' component='h2'>
+            {props.room.name}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-          {props.room.description}
+          <Typography variant='body2' color='textSecondary' component='p'>
+            {props.room.description}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary" href={`rooms/${props.room.name}`}>
+        <Button size='small' color='primary' href={`rooms/${props.room.name}`}>
           Join
         </Button>
       </CardActions>
