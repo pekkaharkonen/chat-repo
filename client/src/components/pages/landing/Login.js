@@ -13,14 +13,10 @@ const Login = ({ history }) => {
     console.log(`Logging in user ${username} with password ${password}...`);
     let token = await loginUser({ username, password });
     if (token) {
-      console.log(`Token: ${token}`);
-      console.log('Saving the token to local storage...');
       localStorage.setItem('token', token);
-      console.log('Set to local storage successful');
       history.push('/rooms');
     } else {
       Swal.fire('Invalid credentials!', '', 'error');
-      // alert('Invalid credentials!');
       setUsername('');
       setPassword('');
     }
