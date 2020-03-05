@@ -38,10 +38,6 @@ class CreateRoom extends Component {
                 <form noValidate autoComplete="off" onSubmit={this.ready}>
                 <TextField id="standard-basic" label="Room name" value={this.state.name} onChange={this.nameAdded} />
                 <TextField id="standard-basic" label="Room description" value={this.state.description} onChange={this.descriptionAdded}/>
-                
-                {/* <form className="CreateDiv" onSubmit={this.ready}> */}
-                    {/* Create a new room: <input type="text" value={this.state.name} onChange={this.nameAdded} /><br />
-                    Write description for this room: <input type="textarea" value={this.state.description} onChange={this.descriptionAdded} /> <br /> */}
                 <Button variant="contained" type="submit" color="primary" style={{margin: 'px'}}>Create</Button>
                 </form>
                 </Typography>

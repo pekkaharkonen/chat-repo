@@ -1,37 +1,48 @@
 import React, { useState, useEffect } from 'react';
 // import socket from "../../../../services/clientSockets"
-import io from "socket.io-client"
+import io from "socket.io-client";
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
 
-
+const useStyles = makeStyles(theme => ({
+  root: {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: 200   
+    },
+    display: 'flex',
+    '& > *': {
+      margin: theme.spacing(1),
+  },
+},
+}));
 
 const RoomView = () => {
-  const [message, setMessage] = useState('');
 
+  const classes = useStyles();
+  const [value, setValue] = React.useState('Controlled');
 
-  const socket = io.connect("http://localhost:8080")
-
-  socket.on('news', function (data) {
-    console.log(data)
-    socket.emit('my other event', { my: 'data' })
-  })
-
-  const handleKeyPress = e => {
-    if (e.key === 'Enter') {
-    }
-
+  const handleChange = event => {
+    setValue(event.target.value);
   };
-
-  useEffect(() => { }, []);
 
   return (
     <div>
-      <input
-        type='text'
-        placeholder='Enter your message here...'
-        value={message}
-        onChange={e => setMessage(e.target.value)}
-        onKeyPress={(e) => handleKeyPress(e)}
-      />
+      <footer>
+      <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+          <TextField
+          className="message"
+          id="outlined-textarea"
+          label="Your message"
+          placeholder="Say Hey!"
+          multiline
+          rows="5"
+          variant="outlined"
+        />            
+        <Button className='SendMessageButton' variant="contained" type="submit" color="primary">Send</Button>
+      </footer>
     </div>
   );
 };
