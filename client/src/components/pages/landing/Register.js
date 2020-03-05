@@ -16,9 +16,7 @@ const Register = ({ history }) => {
       Swal.fire('Password inputs do not match!', '', 'error');
       return;
     } else {
-      //Do something here
       let response = await registerUser({ username, password, email });
-      console.log(response);
       if (response) {
         Swal.fire('Register successful, you can log in now!', '', 'success');
         setUsername('');

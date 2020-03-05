@@ -10,7 +10,6 @@ const Login = ({ history }) => {
   const handleSubmit = async e => {
     e.preventDefault();
     //Do something here
-    console.log(`Logging in user ${username} with password ${password}...`);
     let token = await loginUser({ username, password });
     if (token) {
       localStorage.setItem('token', token);
