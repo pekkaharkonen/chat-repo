@@ -23,10 +23,10 @@ export default function RoomItem(props) {
 
   return (
     <Card className={classes.root}>
-      <CardActionArea>
+      <CardActionArea href={`rooms/${props.room.name}`}>
         <CardMedia
           className={classes.media}
-          image={`https://source.unsplash.com/featured/?${props.room.name}`}
+          image={`https://source.unsplash.com/300x140/?${props.room.name}`}
           title='Contemplative Reptile'
         />
         <CardContent>

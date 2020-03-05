@@ -53,7 +53,9 @@ export default function Header(props) {
             variant='h6'
             className={classes.title}
             style={{ color: 'black' }}
-          ></Typography>
+          >
+            Logged in: {props.user}
+          </Typography>
           {auth && (
             <div>
               <IconButton
