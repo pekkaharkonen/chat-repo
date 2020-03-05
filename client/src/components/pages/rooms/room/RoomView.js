@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
+import RoomHeader from './RoomHeader';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -15,23 +16,25 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     '& > *': {
       margin: theme.spacing(1),
+  }, 
+    large: {
+    width: theme.spacing(10),
+    height: theme.spacing(10),
   },
 },
 }));
 
-const RoomView = () => {
+const RoomView = (props) => {
 
   const classes = useStyles();
   const [value, setValue] = React.useState('Controlled');
 
-  const handleChange = event => {
-    setValue(event.target.value);
-  };
 
   return (
     <div>
+      <RoomHeader match={props.match} history={props.history}/>
       <footer>
-      <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+      <Avatar alt="Remy Sharp" className={classes.large} src="/static/images/avatar/1.jpg" />
           <TextField
           className="message"
           id="outlined-textarea"
