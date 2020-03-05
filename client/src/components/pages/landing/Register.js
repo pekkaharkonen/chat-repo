@@ -20,14 +20,14 @@ const Register = ({ history }) => {
       let response = await registerUser({ username, password, email });
       console.log(response);
       if (response) {
-        Swal.fire('Register successful, you can log in now!');
+        Swal.fire('Register successful, you can log in now!', '', 'success');
         setUsername('');
         setPassword('');
         setPassword2('');
         setEmail('');
         history.push('/login');
       } else {
-        Swal.fire('Username already taken!', '', 'error');
+        Swal.fire('Username or email already taken!', '', 'error');
       }
     }
   };
