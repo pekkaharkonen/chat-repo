@@ -12,7 +12,6 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  background-color: antiquewhite;
 }
 .MuiCard-root {
   width: 300px;
@@ -52,6 +51,12 @@ footer {
 }
 .SendMessageButton {
   height: 50px;
-   padding:20px; 
-   margin:20px
+  padding: 20px;
+  margin: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .create-form {
+    flex-direction: column;
+  }
 }
