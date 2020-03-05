@@ -8,10 +8,10 @@ import Register from './components/pages/landing/Register';
 import Rooms from './components/pages/rooms/Rooms';
 import ProtectedRoute from './components/ProtectedRoute';
 
+
 function App() {
   return (
     <div className='App'>
-      <RoomView />
       <Router>
         <Switch>
           <Route exact path='/' component={Landing} />

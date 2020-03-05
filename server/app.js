@@ -4,7 +4,8 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const cors = require('cors');
-
+const http = require("http")
+const sa = require("./services/socketApi")
 require('dotenv').config();
 
 // middleware
@@ -24,6 +25,12 @@ db.once('open', () => console.log('connection to database established'));
 
 app.use(passport.initialize());
 require('./passport')(passport);
+
+const server = http.createServer(app)
+sa.io.attach(server)
+console.log("socket api attached to server")
+server.listen(process.env.SOCKET_IO_PORT);
+
 
 const usersRoute = require('./routes/usersRoute');
 const authRoute = require('./routes/authRoute');
