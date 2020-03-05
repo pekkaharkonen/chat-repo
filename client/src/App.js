@@ -11,6 +11,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 function App() {
   return (
     <div className='App'>
+      <RoomView />
       <Router>
         <Switch>
           <Route exact path='/' component={Landing} />

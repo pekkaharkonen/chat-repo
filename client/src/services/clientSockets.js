@@ -1,6 +1,6 @@
 import io from "socket.io-client"
 
-const socket = io.connect("http://localhost")
+export const socket = io.connect("http://localhost:6000")
 
 socket.on('news', function (data) {
     console.log(data)

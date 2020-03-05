@@ -1,17 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import RoomHeader from './RoomHeader';
-import RoomMessageArea from './RoomMessageArea';
-import RoomWriteMessage from './RoomWriteMessage';
+// import socket from "../../../../services/clientSockets"
+import io from "socket.io-client"
+
+
 
 const RoomView = () => {
   const [message, setMessage] = useState('');
+
+
+  const socket = io.connect("http://localhost:8080")
+
+  socket.on('news', function (data) {
+    console.log(data)
+    socket.emit('my other event', { my: 'data' })
+  })
+
   const handleKeyPress = e => {
     if (e.key === 'Enter') {
-      console.log('Enter painettu');
     }
+
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
 
   return (
     <div>
@@ -20,11 +30,8 @@ const RoomView = () => {
         placeholder='Enter your message here...'
         value={message}
         onChange={e => setMessage(e.target.value)}
-        onKeyPress={e => handleKeyPress(e)}
+        onKeyPress={(e) => handleKeyPress(e)}
       />
-      {/* <RoomHeader />
-            <RoomMessageArea />
-            <RoomWriteMessage /> */}
     </div>
   );
 };
