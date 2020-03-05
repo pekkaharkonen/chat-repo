@@ -8,9 +8,9 @@ class RoomList extends Component {
             return(<RoomItem room={room} />);
         });
         return (
-            <ul>
-                <li>{allRooms}</li>
-            </ul>
+            <div className="roomListClass">
+                <div style={{display: "grid"}}>{allRooms}</div>
+            </div>
         );
     }
 }

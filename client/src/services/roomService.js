@@ -11,4 +11,4 @@ async function postRooms(newroom){
         return res.data;
     })
 }
-export { getAllRooms };
+export { getAllRooms, postRooms };
