@@ -9,7 +9,7 @@ class RoomList extends Component {
         });
         return (
             <div className="roomListClass">
-                <div style={{display: "grid"}}>{allRooms}</div>
+                {allRooms}
             </div>
         );
     }
