@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { registerUser } from '../../../services/userClient';
+import { TextField, Paper, Button } from '@material-ui/core';
 
 const Register = ({ history }) => {
   const [username, setUsername] = useState('');
@@ -31,53 +32,66 @@ const Register = ({ history }) => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <div className='input-group'>
-          <label htmlFor='username'>Username</label>
-          <input
-            type='text'
-            name='username'
-            id='username'
-            value={username}
-            onChange={e => setUsername(e.target.value)}
-          />
-        </div>
-        <div className='input-group'>
-          <label htmlFor='email'>Email</label>
-          <input
-            type='email'
-            name='email'
-            id='email'
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-          />
-        </div>
-        <div className='input-group'>
-          <label htmlFor='password'>Password</label>
-          <input
-            type='password'
-            name='password'
-            id='password'
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-          />
-        </div>
-        <div className='input-group'>
-          <label htmlFor='password2'>Confirm password</label>
-          <input
-            type='password'
-            name='password2'
-            id='password2'
-            value={password2}
-            onChange={e => setPassword2(e.target.value)}
-          />
-        </div>
-        <button type='submit'>Register</button>
-        <button type='button' onClick={() => history.push('/')}>
-          Cancel
-        </button>
-      </form>
+    <div className='landing'>
+      <Paper elevation={4} style={{ padding: '2rem', background: '#f4f4f4' }}>
+        <form onSubmit={handleSubmit}>
+          <div className='input-group'>
+            <TextField
+              type='text'
+              name='username'
+              id='username'
+              label='Username'
+              value={username}
+              onChange={e => setUsername(e.target.value)}
+            />
+          </div>
+          <div className='input-group'>
+            <TextField
+              type='email'
+              name='email'
+              id='email'
+              label='Email'
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+            />
+          </div>
+          <div className='input-group'>
+            <TextField
+              type='password'
+              name='password'
+              id='password'
+              label='Password'
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+            />
+          </div>
+          <div className='input-group'>
+            <TextField
+              type='password'
+              name='password2'
+              id='password2'
+              label='Confirm password'
+              value={password2}
+              onChange={e => setPassword2(e.target.value)}
+            />
+          </div>
+          <div
+            className='input-group'
+            style={{ display: 'flex', justifyContent: 'center' }}
+          >
+            <Button type='submit' style={{ marginTop: '1.5rem' }}>
+              Register
+            </Button>
+            <Button
+              type='button'
+              style={{ marginTop: '1.5rem' }}
+              onClick={() => history.push('/')}
+            >
+              Cancel
+            </Button>
+          </div>
+        </form>
+      </Paper>
     </div>
   );
 };
