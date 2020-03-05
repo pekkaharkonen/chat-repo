@@ -1,7 +1,6 @@
 
 .App {
   min-height: 100vh;
-  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -10,50 +9,26 @@
 }
 .roomListClass  {
   margin: 20px;
-  min-width: 696px;
   display: grid;
-  /* grid-template-columns: 1fr 1fr 1fr; */
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
   justify-content: center;
   align-items: center;
   background-color: antiquewhite;
 }
 .MuiCard-root {
-  /* display: block; */
-  grid-column: auto;
   width: 300px;
   margin: 30px;
   width: 300px;
-  float: left;
   margin: 30px;
 }
- 
-
-/* .container {
-  display: grid;
-  grid-template-columns: 1fr, 1fr, 1fr;
-  grid-template-rows: auto;
-  width: 100%;
-  align-items: center;
-  padding: 20px;
-}   */
-/*.App {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.classes.root{
+  padding: 50px;
 }
-.MuiCard-root {
-  display: block;
-  width: 300px;
-  float: left;
-  margin: 30px;
-}
-*/
-
-
-
+/* @media screen and (max-width: 650px) {
+  .grid{
+    grid-template-areas:
+    'card';
+  }
+} */
 
