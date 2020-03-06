@@ -43,6 +43,7 @@ footer {
   -webkit-box-shadow: -2px -18px 57px -12px rgba(171, 171, 171, 0.39);
   -moz-box-shadow: -2px -18px 57px -12px rgba(171, 171, 171, 0.39);
   box-shadow: -2px -18px 57px -12px rgba(171, 171, 171, 0.39);
+  padding-bottom: 0;
 }
 .message {
   width: 60%;
@@ -60,7 +61,7 @@ footer {
 #chat-panel {
   width: 70vw;
   margin: auto;
-  display:flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
 }
@@ -81,9 +82,14 @@ footer {
   background-color: #00000022;
 }
 
-
 @media only screen and (max-width: 600px) {
   .create-form {
     flex-direction: column;
+  }
+}
+@media only screen and (max-width: 600px) {
+  footer {
+    width: 100%;
+    padding-left: 0;
   }
 }

@@ -45,7 +45,8 @@ export default function Header(props) {
         position='static'
         style={{
           backgroundColor: 'white',
-          boxShadow: '2px 10px 57px -12px rgba(171,171,171,0.39)'
+          boxShadow: '2px 10px 57px -12px rgba(171,171,171,0.39)',
+          marginBottom: '1rem'
         }}
       >
         <Toolbar>
