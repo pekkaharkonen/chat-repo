@@ -44,7 +44,7 @@ export default function MenuAppBar(props) {
   return (
     <div className={classes.root}>
       <AppBar
-        position='static'
+        position='fixed'
         style={{
           backgroundColor: 'white',
           boxShadow: '2px 10px 57px -12px rgba(171,171,171,0.39)'
