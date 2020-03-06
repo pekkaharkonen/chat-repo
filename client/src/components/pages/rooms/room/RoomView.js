@@ -4,20 +4,15 @@ import TextField from '@material-ui/core/TextField';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import RoomHeader from './RoomHeader';
-import {socketConnection, getAvailableUsers, disconnect, sendMessage} from "../../../../services/clientSocketService"
-import io from "socket.io-client";
 import RoomMessageArea from './RoomMessageArea';
-
+import io from "socket.io-client";
 
 const RoomView = (props) => {
 
   const classes = makeStyles();
   const [value, setValue] = React.useState('Controlled');
-  const [textField, setTextField] = useState("")
-
-  const send = () => {
-    sendMessage(textField)
-}
+  
+  const socket = io("http://localhost:8000")
 
   return (
     <div>
@@ -32,12 +27,12 @@ const RoomView = (props) => {
           multiline
           rows="5"
           variant="outlined"
-          value={textField}
-          onChange={e => setTextField(e.target.value)}
+          
+          
         />            
-        <Button className='SendMessageButton' variant="contained" type="submit" color="primary" onClick={send}>Send</Button>
+        <Button className='SendMessageButton' variant="contained" type="submit" color="primary" >Send</Button>
       </footer>
-      <RoomMessageArea />
+      <RoomMessageArea room={props.match.params.name} user={props.user} socket={socket}/>
     </div>
   );
 };
