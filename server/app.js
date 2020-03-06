@@ -26,10 +26,6 @@ db.once('open', () => console.log('connection to database established'));
 app.use(passport.initialize());
 require('./passport')(passport);
 
-const server = http.createServer(app);
-sa.io.attach(server);
-console.log('socket api attached to server');
-server.listen(process.env.SOCKET_IO_PORT);
 
 const usersRoute = require('./routes/usersRoute');
 const authRoute = require('./routes/authRoute');
@@ -38,7 +34,10 @@ app.use('/api/users', usersRoute);
 app.use('/api/auth', authRoute);
 app.use('/api/rooms', roomsRoute);
 
-app.listen(process.env.PORT || 4000, () => {
+const server = http.createServer(app);
+sa.io.attach(server);
+console.log('socket api attached to server');
+server.listen(process.env.PORT || 4000, () => {
   console.log('server up and running');
 });
 

@@ -11,7 +11,7 @@ const RoomView = props => {
   // const classes = makeStyles();
   const [value, setValue] = React.useState('Controlled');
 
-  const socket = io('http://localhost:8000');
+  const socket = io();
 
   return (
     <div>
