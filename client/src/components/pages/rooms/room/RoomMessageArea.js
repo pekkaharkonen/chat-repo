@@ -84,11 +84,7 @@ const RoomMessageArea = props => {
         {/* <ChatPanel className="chatPanel" messages={messageHistory} /> */}
       </ul>
       <footer>
-        <Avatar
-          alt='Remy Sharp'
-          className={classes.large}
-          src='/static/images/avatar/1.jpg'
-        />
+        <Avatar alt='Remy Sharp' className={classes.large} />
         <TextField
           className='message'
           id='outlined-textarea'

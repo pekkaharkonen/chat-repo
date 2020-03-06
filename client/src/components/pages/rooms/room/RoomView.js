@@ -8,7 +8,7 @@ import RoomMessageArea from './RoomMessageArea';
 import io from 'socket.io-client';
 
 const RoomView = props => {
-  const classes = makeStyles();
+  // const classes = makeStyles();
   const [value, setValue] = React.useState('Controlled');
 
   const socket = io('http://localhost:8000');
@@ -17,11 +17,7 @@ const RoomView = props => {
     <div>
       <RoomHeader match={props.match} history={props.history} />
       <footer>
-        <Avatar
-          alt='Remy Sharp'
-          className={classes.large}
-          // src='/static/images/avatar/1.jpg'
-        />
+        <Avatar alt='Remy Sharp' />
         <TextField
           className='message'
           id='outlined-textarea'
