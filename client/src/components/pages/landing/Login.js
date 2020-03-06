@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { loginUser } from '../../../services/authClient';
 import { TextField, Paper, Button } from '@material-ui/core';
 import Swal from 'sweetalert2';
-import { socketConnection } from '../../../services/clientSocketService';
 
 const Login = ({ history }) => {
   const [username, setUsername] = useState('');
@@ -15,7 +14,6 @@ const Login = ({ history }) => {
     if (token) {
       localStorage.setItem('token', token);
       history.push('/rooms');
-      socketConnection()
     } else {
       Swal.fire('Invalid credentials!', '', 'error');
       setUsername('');
@@ -32,6 +30,7 @@ const Login = ({ history }) => {
               autoComplete='off'
               value={username}
               onChange={e => setUsername(e.target.value)}
+              spellCheck='false'
             />
           </div>
           <div className='input-group'>
@@ -41,6 +40,7 @@ const Login = ({ history }) => {
               autoComplete='off'
               value={password}
               onChange={e => setPassword(e.target.value)}
+              spellCheck='false'
             />
           </div>
           <div

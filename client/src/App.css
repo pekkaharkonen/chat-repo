@@ -12,7 +12,6 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  background-color: antiquewhite;
 }
 .MuiCard-root {
   width: 300px;
@@ -43,7 +42,8 @@ footer {
   text-align: center;
   -webkit-box-shadow: -2px -18px 57px -12px rgba(171, 171, 171, 0.39);
   -moz-box-shadow: -2px -18px 57px -12px rgba(171, 171, 171, 0.39);
-  box-shadow: -2px -18px 57px -12px rgba(171, 171, 171, 0.39);
+  box-shadow: -2px -18px 57px -12px rgba(171, 171, 171, 0.19);
+  padding-bottom: 0;
 }
 .message {
   width: 60%;
@@ -52,6 +52,44 @@ footer {
 }
 .SendMessageButton {
   height: 50px;
-   padding:20px; 
-   margin:20px
+  padding: 20px;
+  margin: 20px;
+}
+.chatPanel {
+  overflow: visible;
+}
+#chat-panel {
+  width: 70vw;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.right {
+  align-self: flex-end !important;
+  color: slateblue;
+  padding: 10px 15px;
+  margin-top: 10px;
+  border-radius: 7px;
+  background-color: #00000022;
+}
+.left {
+  align-self: flex-start !important;
+  color: dimgray;
+  padding: 10px 15px;
+  margin-top: 10px;
+  border-radius: 7px;
+  background-color: #00000022;
+}
+
+@media only screen and (max-width: 600px) {
+  .create-form {
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 600px) {
+  footer {
+    width: 100%;
+    padding-left: 0;
+  }
 }
