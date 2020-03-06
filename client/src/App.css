@@ -54,6 +54,16 @@ footer {
   padding: 20px;
   margin: 20px;
 }
+.chatPanel {
+  overflow: visible;
+}
+.right {
+  justify-content: flex-end !important;
+}
+.left {
+  justify-content: flex-start !important;
+}
+
 
 @media only screen and (max-width: 600px) {
   .create-form {
