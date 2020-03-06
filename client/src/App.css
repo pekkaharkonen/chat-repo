@@ -57,11 +57,28 @@ footer {
 .chatPanel {
   overflow: visible;
 }
+#chat-panel {
+  width: 70vw;
+  margin: auto;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .right {
-  justify-content: flex-end !important;
+  align-self: flex-end !important;
+  color: slateblue;
+  padding: 20px;
+  margin-top: 10px;
+  border-radius: 7px;
+  background-color: #00000022;
 }
 .left {
-  justify-content: flex-start !important;
+  align-self: flex-start !important;
+  color: dimgray;
+  padding: 20px;
+  margin-top: 10px;
+  border-radius: 7px;
+  background-color: #00000022;
 }
 
 
