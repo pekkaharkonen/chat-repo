@@ -79,7 +79,7 @@ const RoomMessageArea = props => {
     <div className='chat' style={{ overflow: 'auto' }}>
       <ul
         id='chat-panel'
-        style={{ paddingBottom: '200px', paddingTop: '70px' }}
+        style={{ paddingBottom: '190px', paddingTop: '65px' }}
       >
         {/* <ChatPanel className="chatPanel" messages={messageHistory} /> */}
       </ul>
