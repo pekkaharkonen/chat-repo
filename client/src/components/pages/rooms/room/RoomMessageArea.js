@@ -54,14 +54,19 @@ const RoomMessageArea = props => {
   }, []);
 
   const send = () => {
-    socket.emit('message', textField, props.room, props.user);
-    setTextField('');
+    if (textField.trim() === '') {
+      return;
+    } else {
+      socket.emit('message', textField, props.room, props.user);
+      setTextField('');
+    }
   };
 
   const classes = useStyles();
 
   const handleKeyPress = e => {
     if (e.key === 'Enter') {
+      e.preventDefault();
       send();
     }
   };
@@ -74,7 +79,7 @@ const RoomMessageArea = props => {
     <div className='chat' style={{ overflow: 'auto' }}>
       <ul
         id='chat-panel'
-        style={{ paddingBottom: '240px', paddingTop: '70px' }}
+        style={{ paddingBottom: '200px', paddingTop: '70px' }}
       >
         {/* <ChatPanel className="chatPanel" messages={messageHistory} /> */}
       </ul>
