@@ -37,11 +37,14 @@ const RoomMessageArea = (props) => {
 
       })
       .on("new message", (msg, user) => {
+        let chatAlignment
+        user === props.user ? chatAlignment = "right" : chatAlignment = "left"
         setMessageHistory(messageHistory.unshift({
           message: msg,
-          author: user
+          author: user,
+          alignment: chatAlignment
         }))
-        document.getElementById("chat-panel").innerHTML += `<li style="list-style: none;">${messageHistory[0].author}: ${messageHistory[0].message}`
+        document.getElementById("chat-panel").innerHTML += `<li style="list-style: none;" class=${messageHistory[0].alignment}>${messageHistory[0].author}: ${messageHistory[0].message}`
       })
       .off("disconnect")
   }, [])
@@ -49,6 +52,7 @@ const RoomMessageArea = (props) => {
 
   const send = () => {
     socket.emit("message", textField, props.room, props.user)
+    setTextField("")
   }
 
   const classes = useStyles();
